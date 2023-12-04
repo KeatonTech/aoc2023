@@ -53,12 +53,11 @@ incrementInstances amount card = card {instances = instances card + amount}
 
 addCardsForWinnings :: [Card] -> [Card]
 addCardsForWinnings [] = []
-addCardsForWinnings cards =
-  let firstCard = head cards
-      remainingCards = tail cards
-      correctlySelected = correctlySelectedNumbers firstCard
-   in [incrementInstances (instances firstCard) c | c <- take correctlySelected remainingCards]
-        ++ drop correctlySelected remainingCards
+addCardsForWinnings (firstCard : remainingCards) =
+  let correctlySelected = correctlySelectedNumbers firstCard
+      selectedCards = take correctlySelected remainingCards
+      updatedCards = map (incrementInstances (instances firstCard)) selectedCards
+   in updatedCards ++ drop correctlySelected remainingCards
 
 -- | The function which calculates the solution for part two
 solve2 :: Input -> Solution

@@ -67,6 +67,7 @@ main = runAoc parser solve1 solve2
   # Append the day to the advent-of-code.cabal file
   cabal_day="executable ${d}
   import: deps
+  other-modules: Util
   hs-source-dirs:
       solutions
   main-is: ${d}.hs

@@ -5,8 +5,8 @@ version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/lsmor/template-advent-of-code#readme>
 homepage:       https://github.com/lsmor/template-advent-of-code#readme
 bug-reports:    https://github.com/lsmor/template-advent-of-code/issues
-author:         Luis Morillo Najarro
-copyright:      2021 Luis Morillo Najarro
+author:         Keaton Brandt
+copyright:      2023 Keaton Brandt
 license:        BSD-3-Clause
 build-type:     Simple
 extra-source-files:
@@ -14,7 +14,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/lsmor/template-advent-of-code
+  location: https://github.com/KeatonTech/aoc2023
 
 common deps
   default-extensions:
@@ -24,11 +24,14 @@ common deps
       TupleSections
       StrictData
       ImportQualifiedPost
+      EmptyDataDeriving
   build-depends:
-      attoparsec
+      megaparsec
     , base >=4.7 && <5
     , bytestring
     , containers
+    , either
+    , fixed-list
     , matrix
     , vector
     , split
@@ -36,6 +39,7 @@ common deps
     , mtl
     , pointedlist
     , bytestring-trie
+    , timeit
   other-modules:
       Paths_advent_of_code
   ghc-options:
@@ -43,3 +47,10 @@ common deps
   default-language: Haskell2010
 
 -- Do not touch after this line. aoc-hs will edit it
+executable day-3
+  import: deps
+  other-modules: Util
+  hs-source-dirs:
+      solutions
+  main-is: day-3.hs
+
